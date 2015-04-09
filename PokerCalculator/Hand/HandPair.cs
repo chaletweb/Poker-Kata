@@ -16,7 +16,6 @@ namespace PokerCalculator.Hand
         }
         public override IHand Check(List<Card> cards)
         {
-            HandBase hand = null;
             var groupCard =
                 cards.GroupBy(x => x.Value)
                     .OrderByDescending(group => @group.Count()).ThenByDescending(x => x.Key)
@@ -28,15 +27,13 @@ namespace PokerCalculator.Hand
                 return null;
             }
 
-            if (groupCard[0].Item2 == 2)
-            {
-                hand = new HandPair();
-                hand.SelectedCards.AddRange(groupCard[0].Item1.ToList());
+            if (groupCard[0].Item2 != 2) return null;
+            HandBase hand = new HandPair();
+            hand.SelectedCards.AddRange(groupCard[0].Item1.ToList());
 
-                for (int i = 1; i < groupCard.Count && i <= 3; i++)
-                {
-                    hand.SelectedCards.Add(groupCard[i].Item1.ToList()[0]);
-                }
+            for (int i = 1; i < groupCard.Count && i <= 3; i++)
+            {
+                hand.SelectedCards.Add(groupCard[i].Item1.ToList()[0]);
             }
 
             return hand;
