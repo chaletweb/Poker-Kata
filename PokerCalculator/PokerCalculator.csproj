@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{370B6F66-5247-4BA4-8C2E-1CDD5B057F9B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PokerCalculator</RootNamespace>
+    <AssemblyName>PokerCalculator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Board.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="Engine\HandEngine.cs" />
+    <Compile Include="IDealer.cs" />
+    <Compile Include="Statistic\StatisticsCardPrevision.cs" />
+    <Compile Include="ColorCard.cs" />
+    <Compile Include="Dealer.cs" />
+    <Compile Include="Engine\PermuteUtils.cs" />
+    <Compile Include="Engine\OmahaEngine.cs" />
+    <Compile Include="Hand\HandStraightFlush.cs" />
+    <Compile Include="Hand\HandFlush.cs" />
+    <Compile Include="Hand\HandStraight.cs" />
+    <Compile Include="Hand\HandCarre.cs" />
+    <Compile Include="Hand\HandFull.cs" />
+    <Compile Include="Hand\HandBrelan.cs" />
+    <Compile Include="Hand\HandDoublePair.cs" />
+    <Compile Include="Engine\TexasHoldemEngine.cs" />
+    <Compile Include="Hand\HandBase.cs" />
+    <Compile Include="Hand\HandPair.cs" />
+    <Compile Include="Hand\HandType.cs" />
+    <Compile Include="Hand\IHandChecker.cs" />
+    <Compile Include="IBoard.cs" />
+    <Compile Include="Hand\IHand.cs" />
+    <Compile Include="Engine\IHandEngine.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PokerTable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistic\StatisticsEngine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\OmahaEngine.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TexasHoldemEngine.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
